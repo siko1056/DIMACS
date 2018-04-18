@@ -108,16 +108,13 @@ must be divided by `100,000`.
 
 - `genfap.m`: commented Matlab file to make `.mat` from `.dat`-files
 
-| Name  | Rows      | SDP        | Quadr. | Lin.      | Opt. value             |
-| ----- | --------: | ---------- | ------ | --------: | ---------------------- |
-| fap09 |    15,225 | [1; 174]   |      - |    14,025 | 10.8                   |
-| fap25 | 2,244,021 | [1; 2,118] |      - | 2,232,141 | 12.5 `* (lb, not opt)` |
-| fap36 | 8,448,105 | [1; 4,110] |      - | 8,405,931 | 63.7 `* (lb, not opt)` |
-
-| Name      | Rows      | SDP        | Quadr. | Lin.      | Opt. value           |
-| --------- | --------: | ---------- | ------ | --------: | -------------------- |
-| fap-sup25 |   322,924 | [1; 2,118] |      - |   311,044 | 12.5 `(lb, not opt)` |
-| fap-sup36 | 1,154,467 | [1; 4,110] |      - | 1,112,293 | 63.7 `(lb, not opt)` |
+| Name      | Rows      | SDP        | Quadr. | Lin.      | Opt. value             |
+| --------- | --------: | ---------- | ------ | --------: | ---------------------- |
+| fap09     |    15,225 | [1; 174]   |      - |    14,025 | 10.8                   |
+| fap25     | 2,244,021 | [1; 2,118] |      - | 2,232,141 | 12.5 `* (lb, not opt)` |
+| fap36     | 8,448,105 | [1; 4,110] |      - | 8,405,931 | 63.7 `* (lb, not opt)` |
+| fap-sup25 |   322,924 | [1; 2,118] |      - |   311,044 | 12.5 `(lb, not opt)`   |
+| fap-sup36 | 1,154,467 | [1; 4,110] |      - | 1,112,293 | 63.7 `(lb, not opt)`   |
 
 *Remark*: The `fap-sup` problems are relaxations of the corresponding `fap`
 instances.  The difference is detailed in the [report][lib.pdf].
