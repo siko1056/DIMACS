@@ -16,11 +16,11 @@ Implementation Challenge, we assembled a library of test problems.
 Our main concerns in the selection were to create a library of instances that
 - arise from the widest possible range of sources, and applications.
 - are as realistic as possible.
-- represent all levels of difficulty.</dd>
+- represent all levels of difficulty.
 - have their origin and the formulation used clearly documented.
 
 Currently, we have 12 problem sets.  More are welcome; please see the
-"Submissions" section below.
+[section below](#submissions).
 
 
 ## Developers:
@@ -29,20 +29,6 @@ Currently, we have 12 problem sets.  More are welcome; please see the
   Chapel Hill
 - [Stefan H. Schmieta](http://corc.ieor.columbia.edu/~schmieta) Columbia
   University
-
-
-## Problem descriptions:
-
-- <a href="tablecon.html">A table</a> listing problem originators, formulators,
-  and donators.
-
-
-## Technical report:
-
-- [A preliminary version][lib.ps] ([PDF version][lib.pdf]) with more details.
-
-[lib.ps]: http://dimacs.rutgers.edu/archive/Challenges/Seventh/Instances/lib.ps
-[lib.pdf]: doc/lib.pdf
 
 
 ## Problem formats:
@@ -65,24 +51,18 @@ Currently, we have 12 problem sets.  More are welcome; please see the
   - [An SDPpack -> SDPA converter in C](sqlptosdpa.c).
 
 
-## Reporting the solution quality:
-
-- A document describing the required format for reporting the error of the
-  obtained solutions is [here](error_report.html).
-
-
-## Links:
-
-- [Hans Mittellman's independent benchmarking results](http://plato.la.asu.edu/dimacs.html).
-- The [SDPLIB library](http://www.nmt.edu/~sdplib/) by Brian Borchers.
-
-
 ## Problem sets:
 
 The [complete problem library][lib.tar.gz] as a `tar` file and compressed with
-`gzip`.
+`gzip`.  [This table](http://dimacs.rutgers.edu/archive/Challenges/Seventh/Instances/tablecon.html)
+lists the problem originators, formulators, and donators.  Read the
+[preliminary technical report][lib.ps] ([PDF version][lib.pdf]) for more
+details.
 
+[lib.ps]: http://dimacs.rutgers.edu/archive/Challenges/Seventh/Instances/lib.ps
+[lib.pdf]: doc/lib.pdf
 [lib.tar.gz]: http://dimacs.rutgers.edu/archive/Challenges/Seventh/Instances/lib.tar.gz
+
 
 ### The **torus** set: Max cut problems
 
@@ -266,6 +246,55 @@ in the `mat`-file as `c_mult`.
   accurate one; nevertheless, its accuracy is still not satisfactory, and the
   true value may be quite different.
 
+
+## Reporting the solution quality:
+
+We suggest the following data to be supplied with all computational results:
+We are given the primal-dual pair of problems
+
+    Min c'x         Max b'y
+    st. x in K      st. z in K
+        Ax = b          A^T y + z = c
+
+where `K =K^*` is a direct product of semidefinite, quadratic, and nonnegative
+cones. The best way to measure the error of a solution pair `( x, (y,z) )` is
+calculating
+
+1. the violation of the affine constraints normalized:
+
+       norm(Ax - b)/(1+max(abs(b))), norm(A^T y + z - c)(1+max(abs(c)))
+
+2. the violation of the conic constraints:
+
+  For this purpose, we suggest computing `min(eigK(x))` and `min(eigK(z))` by
+  using Sedumi's `eigK` function.
+
+3. Some codes do not explicitly maintain `z`.  In this case, one should set
+
+       z = c - A^T y
+
+  Of course, then the violation as in i) will be zero (depending on the
+  accuracy achieved by the computer).
+
+4. Finally, the duality gap:
+
+       max(0, c'*x - b'*y)
+
+**IMPORTANT!** To make all error computations consistent, please use the
+
+- Euclidean norms on vectors and
+- Frobenius norms on matrices (which are then consistent).
+
+Be careful not to simply use the Matlab `norm` function, since  that uses the
+largest singular value of a matrix, which will be considerably smaller than its
+Frobenius norm.
+
+> Many thanks to Mike Todd for pointing this out.
+
+## Links:
+
+- [Hans Mittellman's independent benchmarking results](http://plato.la.asu.edu/dimacs.html).
+- The [SDPLIB library](http://www.nmt.edu/~sdplib/) by Brian Borchers.
 
 ## Submissions:
 
