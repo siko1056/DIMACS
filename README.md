@@ -34,21 +34,20 @@ Currently, we have 12 problem sets.  More are welcome; please see the
 ## Problem formats:
 
 - The `.mat` files contain the problems in the format used by
-  [Sedumi](http://www.unimaas.nl/~sturm/research.html)
-  that solves a problem of the form
+  [Sedumi](http://sedumi.ie.lehigh.edu/) that solves a problem of the form
 
       min { c'x | st. Ax = b, x in K },
 
   where `K` is an appropriate cone, representing semidefinite, quadratic, and
-  linear constraints on `x`; for details, see [the report][lib.pdf].  This
-  format is probably the easiest to convert to all other formats, if you have
-  Matlab.  For some large  graph problems, only a `.dat` file containing the
-  graph description is available, with a commented Matlab code that can
+  linear constraints on `x`; for details, see [the report (PDF)][lib.pdf].
+  This format is probably the easiest to convert to all other formats, if you
+  have Matlab.  For some large  graph problems, only a `.dat` file containing
+  the graph description is available, with a commented Matlab code that can
   generate the `.mat` file from it.
 
 - Two converter codes are provided below, both written by Brian Borchers.
-  - [A Sedumi -> SDPpack converter in Matlab.](writesdp.m)
-  - [An SDPpack -> SDPA converter in C](sqlptosdpa.c).
+  - [A Sedumi -> SDPpack converter in Matlab.](http://dimacs.rutgers.edu/archive/Challenges/Seventh/Instances/writesdp.m)
+  - [An SDPpack -> SDPA converter in C](http://dimacs.rutgers.edu/archive/Challenges/Seventh/Instances/sqlptosdpa.c).
 
 
 ## Problem sets:
@@ -293,7 +292,7 @@ Frobenius norm.
 
 ## Links:
 
-- [Hans Mittellman's independent benchmarking results](http://plato.la.asu.edu/dimacs.html).
+- [Hans Mittelmann's independent benchmarking results](http://plato.asu.edu/dimacs/).
 - The [SDPLIB library](http://www.nmt.edu/~sdplib/) by Brian Borchers.
 
 ## Submissions:
